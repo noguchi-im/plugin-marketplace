@@ -15,7 +15,9 @@
       "Bash(gh api*)",
       "Bash(echo*)",
       "Bash(git*)",
-      "Bash(git:*)"
+      "Bash(git:*)",
+      "Bash(gh secret:*)",
+      "Bash(gh run:*)"
     ],
     "deny": [
       "Bash(rm *)",
