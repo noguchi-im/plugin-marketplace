@@ -1,0 +1,93 @@
+name: Sync Plugins from Source
+
+on:
+  repository_dispatch:
+    types: [plugin-updated]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout marketplace
+        uses: actions/checkout@v4
+
+      - name: Checkout source repo
+        uses: actions/checkout@v4
+        with:
+          repository: noguchi-im/my-operations
+          token: ${{ secrets.SOURCE_REPO_PAT }}
+          path: _source
+          sparse-checkout: |
+            .claude/plugins/finance
+            .claude/plugins/tools-document
+          sparse-checkout-cone-mode: false
+
+      - name: Sync plugins
+        id: sync
+        run: |
+          PLUGINS=("finance" "tools-document")
+          UPDATED=""
+
+          for plugin in "${PLUGINS[@]}"; do
+            SRC="_source/.claude/plugins/$plugin"
+            DST="plugins/$plugin"
+
+            if [ ! -d "$SRC" ]; then
+              echo "::warning::Source not found: $SRC"
+              continue
+            fi
+
+            SRC_VER=$(jq -r '.version' "$SRC/.claude-plugin/plugin.json")
+            DST_VER=$(jq -r '.version' "$DST/.claude-plugin/plugin.json" 2>/dev/null || echo "0.0.0")
+
+            if [ "$SRC_VER" != "$DST_VER" ]; then
+              echo "Updating $plugin: $DST_VER -> $SRC_VER"
+              rsync -a --delete "$SRC/" "$DST/"
+
+              # Restore English description from marketplace.json
+              EN_DESC=$(jq -r --arg name "$plugin" \
+                '.plugins[] | select(.name == $name) | .description' \
+                .claude-plugin/marketplace.json)
+              if [ -n "$EN_DESC" ] && [ "$EN_DESC" != "null" ]; then
+                jq --arg desc "$EN_DESC" '.description = $desc' \
+                  "$DST/.claude-plugin/plugin.json" > tmp.json \
+                  && mv tmp.json "$DST/.claude-plugin/plugin.json"
+              fi
+
+              UPDATED="${UPDATED}${plugin}(${DST_VER}->${SRC_VER}) "
+            else
+              echo "$plugin is up to date ($SRC_VER)"
+            fi
+          done
+
+          if [ -n "$UPDATED" ]; then
+            echo "updated=$UPDATED" >> "$GITHUB_OUTPUT"
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Clean up source checkout
+        run: rm -rf _source
+
+      - name: Commit and push
+        if: steps.sync.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add plugins/
+          git commit -m "Sync plugins: ${{ steps.sync.outputs.updated }}"
+          git push
+
+      - name: Summary
+        run: |
+          if [ "${{ steps.sync.outputs.changed }}" == "true" ]; then
+            echo "### Updated plugins" >> "$GITHUB_STEP_SUMMARY"
+            echo "${{ steps.sync.outputs.updated }}" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "All plugins are up to date." >> "$GITHUB_STEP_SUMMARY"
+          fi

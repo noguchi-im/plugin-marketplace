@@ -1,5 +1,5 @@
 {
   "name": "tools-document",
-  "description": "PDF・Word・PowerPoint・Excel の読取・作成・操作を行うドキュメント処理スキル群",
+  "description": "Document processing skills for reading, creating, and manipulating PDF, Word, PowerPoint, and Excel files",
   "version": "0.4.1"
 }

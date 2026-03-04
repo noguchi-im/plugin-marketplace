@@ -11,37 +11,33 @@ A collection of plugins for Claude Code. This repository hosts plugins that exte
 | [tools-document](plugins/tools-document/) | Skill | Document processing skills for reading, creating, and manipulating PDF, Word, PowerPoint, and Excel files |
 | [finance](plugins/finance/) | Skill | Financial analysis skills for economics, investment products, stocks, portfolios, and investment decision support |
 
-## Usage
+## Installation
 
-### Skills
-
-Copy the skill file (`.md`) to your Claude Code configuration directory.
+Install via Claude Code's Plugin Marketplace commands.
 
 ```bash
-# Example: install a skill
-cp plugins/<plugin-name>/skill.md ~/.claude/commands/<skill-name>.md
+# Add the marketplace
+/plugin marketplace add nogutetu/plugin-marketplace
+
+# Install individual plugins
+/plugin install tools-document
+/plugin install finance
 ```
-
-### MCP Servers
-
-Follow the installation instructions in each MCP Server's `README.md`.
-
-### Hooks
-
-Follow the setup instructions in each Hook's `README.md`.
 
 ## Repository Structure
 
 ```
 plugin-marketplace/
+├── .claude-plugin/
+│   └── marketplace.json
 ├── README.md
 ├── README.en.md
 ├── CONTRIBUTING.md
 ├── LICENSE
-├── catalog.json
 └── plugins/
     └── <plugin-name>/
-        ├── manifest.json
+        ├── .claude-plugin/
+        │   └── plugin.json
         ├── README.md
         └── ...
 ```

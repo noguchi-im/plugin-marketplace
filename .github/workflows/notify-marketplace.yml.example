@@ -1,0 +1,28 @@
+# ============================================================
+# このファイルは元リポジトリ (noguchi-im/my-operations) に配置してください
+# 配置先: .github/workflows/notify-marketplace.yml
+# ============================================================
+#
+# 必要な設定:
+#   my-operations リポジトリの Settings > Secrets > Actions に
+#   MARKETPLACE_PAT を追加 (repo scope の Personal Access Token)
+#
+name: Notify Plugin Marketplace
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.claude/plugins/finance/**'
+      - '.claude/plugins/tools-document/**'
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger marketplace sync
+        run: |
+          gh api repos/noguchi-im/plugin-marketplace/dispatches \
+            -f event_type=plugin-updated
+        env:
+          GH_TOKEN: ${{ secrets.MARKETPLACE_PAT }}

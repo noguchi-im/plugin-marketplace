@@ -16,26 +16,25 @@ plugins/<your-plugin-name>/
 - 小文字のケバブケース（例: `my-awesome-skill`）
 - Lowercase kebab-case (e.g., `my-awesome-skill`)
 
-### 2. manifest.json を作成 / Create manifest.json
+### 2. `.claude-plugin/plugin.json` を作成 / Create `.claude-plugin/plugin.json`
 
-各Pluginには `manifest.json` が必須です。
+各Pluginには `.claude-plugin/plugin.json` が必須です。
 
-Each plugin must include a `manifest.json`.
+Each plugin must include a `.claude-plugin/plugin.json`.
 
 ```json
 {
   "name": "plugin-name",
   "version": "1.0.0",
-  "type": "skill | mcp-server | hook",
-  "description": {
-    "ja": "日本語の説明",
-    "en": "English description"
-  },
-  "author": "your-name",
-  "license": "MIT",
-  "tags": ["tag1", "tag2"],
-  "claude_code_version": ">=1.0.0",
-  "entry": "skill.md | index.ts | hook.sh"
+  "type": "skill",
+  "description": "Plugin description",
+  "skills": [
+    {
+      "name": "skill-name",
+      "description": "Skill description",
+      "path": "skills/skill-name.md"
+    }
+  ]
 }
 ```
 
@@ -45,13 +44,9 @@ Each plugin must include a `manifest.json`.
 |---|---|---|
 | `name` | Yes | Plugin名（ディレクトリ名と一致） / Plugin name (must match directory name) |
 | `version` | Yes | セマンティックバージョニング / Semantic versioning |
-| `type` | Yes | `skill`, `mcp-server`, `hook` のいずれか / One of `skill`, `mcp-server`, `hook` |
-| `description` | Yes | 日英の説明文 / Description in Japanese and English |
-| `author` | Yes | 作者名 / Author name |
-| `license` | Yes | ライセンス / License |
-| `tags` | No | 検索用タグ / Tags for search |
-| `claude_code_version` | No | 対応するClaude Codeのバージョン / Compatible Claude Code version |
-| `entry` | Yes | エントリーポイントファイル / Entry point file |
+| `type` | Yes | `skill` など / e.g., `skill` |
+| `description` | Yes | 説明文 / Description |
+| `skills` | Yes | スキル定義の配列 / Array of skill definitions |
 
 ### 3. README.md を作成 / Create README.md
 
@@ -65,18 +60,20 @@ Create `README.md` (Japanese) and `README.en.md` (English) for each plugin.
 - 使い方 / Usage
 - 設定オプション（あれば） / Configuration options (if any)
 
-### 4. catalog.json を更新 / Update catalog.json
+### 4. `.claude-plugin/marketplace.json` を更新 / Update `.claude-plugin/marketplace.json`
 
-ルートの `catalog.json` にPluginの情報を追加してください。
+ルートの `.claude-plugin/marketplace.json` にPluginの情報を追加してください。
 
-Add your plugin's information to the root `catalog.json`.
+Add your plugin's information to the root `.claude-plugin/marketplace.json`.
 
 ## ディレクトリ構造の例 / Example Directory Structure
 
 ```
 plugins/my-skill/
-├── manifest.json
+├── .claude-plugin/
+│   └── plugin.json
 ├── README.md
 ├── README.en.md
-└── skill.md
+└── skills/
+    └── skill-name.md
 ```
