@@ -29,7 +29,7 @@ A collection of financial analysis skills for Claude Code covering economics, in
 
 ```bash
 # Install from marketplace
-/plugin marketplace add nogutetu/plugin-marketplace
+/plugin marketplace add noguchi-im/plugin-marketplace
 /plugin install finance
 ```
 

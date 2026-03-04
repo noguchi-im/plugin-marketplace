@@ -29,7 +29,7 @@
 
 ```bash
 # マーケットプレイスからインストール
-/plugin marketplace add nogutetu/plugin-marketplace
+/plugin marketplace add noguchi-im/plugin-marketplace
 /plugin install finance
 ```
 
