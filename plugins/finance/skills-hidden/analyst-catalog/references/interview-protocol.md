@@ -110,7 +110,7 @@ report-store の search 操作で `--analyst <analyst_name>` を検索する。
 
 ### ジャーナル検査
 
-ジャーナルファイル `home/finance/analyst-catalog/journals/<analyst_name>.yaml` を確認する。
+ジャーナルファイル `<base_dir>/analyst-catalog/journals/<analyst_name>.yaml` を確認する。
 
 | 結果 | 処理 |
 |---|---|

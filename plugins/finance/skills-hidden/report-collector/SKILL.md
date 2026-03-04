@@ -13,7 +13,7 @@ allowed-tools: Read, Bash, Glob, WebFetch, WebSearch
 
 | 名称 | パス（リポジトリルートからの相対） |
 |---|---|
-| ジャーナル DB | `home/finance/report-collector/memory/` |
+| ジャーナル DB | `<base_dir>/report-collector/memory/` |
 
 スクリプト・リファレンスのパスは Glob で検索して特定する:
 - journal.py: `.claude/plugins/finance/**/report-collector/scripts/journal.py`

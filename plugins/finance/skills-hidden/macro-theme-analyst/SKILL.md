@@ -73,7 +73,7 @@ review の場合、mode を判定する:
 
 ### 0. 較正情報の参照
 
-`home/finance/macro-theme-analyst/memory/events.jsonl` を Read で読み込む。
+`<base_dir>/macro-theme-analyst/memory/events.jsonl` を Read で読み込む。
 
 - ファイルが存在しない場合（初回実行）→ スキップしてステップ1へ
 - 存在する場合 → validate で検出された `bias_detected` を確認し、該当する偏り注意を認識する
@@ -222,7 +222,7 @@ report-store save
 
 ### 11. イベント記録
 
-`home/finance/macro-theme-analyst/memory/events.jsonl` に1行追記する。
+`<base_dir>/macro-theme-analyst/memory/events.jsonl` に1行追記する。
 ディレクトリが存在しない場合は作成する。
 
 ```json

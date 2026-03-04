@@ -204,7 +204,7 @@ report-collector feedback
 
 ### 11. 学習記録
 
-`home/finance/stock-analyst/memory/events.jsonl` に以下を追記する:
+`<base_dir>/stock-analyst/memory/events.jsonl` に以下を追記する:
 
 ```json
 {"ts":"<ISO8601>","op":"analyze","code":"<銘柄コード>","depth":"<概要|標準|詳細>","scores":{"financial_health":<1-5>,"growth_potential":<1-5>,"valuation_attractiveness":<1-5>},"investment_rating":"<strong buy|buy|neutral|sell|strong sell>","data_coverage":"<full|partial>"}
@@ -353,7 +353,7 @@ report-store score --id <store_id> --quality-score <financial_health と growth_
 
 ### 10. 学習記録
 
-`home/finance/stock-analyst/memory/events.jsonl` に以下を追記する:
+`<base_dir>/stock-analyst/memory/events.jsonl` に以下を追記する:
 
 ```json
 {"ts":"<ISO8601>","op":"earnings-update","code":"<銘柄コード>","beat_miss":"<beat|in-line|miss>","scores_changed":<true|false>,"thesis_impact":"<reinforced|challenged|invalidated|null>","data_coverage":"<full|partial>"}
@@ -468,7 +468,7 @@ report-store save
 
 ### 9. 学習記録
 
-`home/finance/stock-analyst/memory/events.jsonl` に以下を追記する:
+`<base_dir>/stock-analyst/memory/events.jsonl` に以下を追記する:
 
 ```json
 {"ts":"<ISO8601>","op":"earnings-preview","code":"<銘柄コード>","scenarios":3,"catalysts_count":<カタリスト数>,"data_coverage":"<full|partial>"}

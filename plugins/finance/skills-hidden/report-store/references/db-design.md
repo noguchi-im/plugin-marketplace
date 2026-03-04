@@ -19,8 +19,8 @@
 | レポート本文 | Markdown ファイル | 人が読める、Git diff で変更追跡可能 |
 | メタデータ・インデックス | SQLite | 検索が効率的、スキーマが明確 |
 
-レポート本文は `home/finance/report-store/reports/YYYY/rpt-YYYYMMDD-NNN.md` に保存する。
-SQLite DB は `home/finance/report-store/index/report-index.db` に配置する。
+レポート本文は `<base_dir>/report-store/reports/YYYY/rpt-YYYYMMDD-NNN.md` に保存する。
+SQLite DB は `<base_dir>/report-store/index/report-index.db` に配置する。
 
 ### ID 体系
 

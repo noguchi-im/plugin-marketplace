@@ -211,7 +211,7 @@ report-collector feedback
 
 ### 12. 学習記録
 
-`home/finance/etf-analyst/memory/events.jsonl` に以下を追記する:
+`<base_dir>/etf-analyst/memory/events.jsonl` に以下を追記する:
 
 ```json
 {"ts":"<ISO8601>","op":"analyze","code":"<ETFコード>","depth":"<概要|標準|詳細>","scores":{"cost_efficiency":<1-5>,"tracking_quality":<1-5>,"liquidity_accessibility":<1-5>,"constituent_quality":<1-5>},"investment_rating":"<strong buy|buy|neutral|sell|strong sell>","data_coverage":"<full|partial>","constituent_coverage":{"count":<調査銘柄数>,"nav_ratio":<NAVカバー率>}}

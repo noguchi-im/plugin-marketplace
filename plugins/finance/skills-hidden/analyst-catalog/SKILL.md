@@ -13,8 +13,8 @@ allowed-tools: Read, Write, Edit, Glob, Bash
 
 | 名称 | パス（リポジトリルートからの相対） |
 |---|---|
-| カタログ | `home/finance/analyst-catalog/catalog.yaml` |
-| ジャーナル | `home/finance/analyst-catalog/journals/<analyst_name>.yaml` |
+| カタログ | `<base_dir>/analyst-catalog/catalog.yaml` |
+| ジャーナル | `<base_dir>/analyst-catalog/journals/<analyst_name>.yaml` |
 | アナリスト SKILL | `.claude/plugins/finance/skills/<analyst_name>/SKILL.md` または `.claude/plugins/finance/skills-hidden/<analyst_name>/SKILL.md` |
 | アナリスト実装 | `.claude/plugins/finance/skills/<analyst_name>/` または `.claude/plugins/finance/skills-hidden/<analyst_name>/` |
 
@@ -102,7 +102,7 @@ report-store search --analyst <analyst_name>
 ジャーナルファイルの存在を確認する:
 
 ```
-home/finance/analyst-catalog/journals/<analyst_name>.yaml
+<base_dir>/analyst-catalog/journals/<analyst_name>.yaml
 ```
 
 - 存在する場合 → Read で読み込み、interview-protocol.md のジャーナル集約ルールに従って集約する
