@@ -1,5 +1,6 @@
 ---
 name: report-collector
+role: infra
 description: 自然言語の情報要求から金融・経済データを収集し、アブストラクトを生成して report-store に格納する基盤サービス。情報収集・外部データ取得を行いたい時に使用する。
 disable-model-invocation: true
 user-invocable: false

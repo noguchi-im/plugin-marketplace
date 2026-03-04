@@ -1,5 +1,6 @@
 ---
 name: mbo-analyst
+role: analyst
 description: MBO候補銘柄の発掘・分析・監視を行い、買収コスト・事業品質・支配構造・実行容易性・阻害要因の5軸評価レポートを生成する。MBO分析・スクリーニング条件・オーナー構造確認を行いたい時に使用する。
 disable-model-invocation: false
 user-invocable: false

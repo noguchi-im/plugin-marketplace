@@ -1,5 +1,6 @@
 ---
 name: finance-advisor
+role: infra
 description: 金融に関するあらゆる相談の窓口。質問の複雑さに応じて自己回答またはアナリスト群への委任を行い、統合された回答を提供する。金融相談・投資分析の依頼時に使用する。
 disable-model-invocation: false
 user-invocable: true
@@ -23,13 +24,18 @@ budget-tiers.md のパスは Glob で `.claude/plugins/finance/**/finance-adviso
 会話開始時にカタログキャッシュを構築する。
 
 1. Glob で `.claude/plugins/finance/**/analyst-catalog/references/catalog.yaml` を検索し、見つかった場合は Read で読み込む
-   - 存在する場合 → 内容をキャッシュし、手順 3 へ
+   - 複数ヒットした場合は `skills-hidden/` パスを優先し、それでも複数の場合は先頭の1つを使用する
+   - 存在する場合 → 内容をキャッシュし、登録済みアナリスト名のセットを記録する。手順 3 へ
    - 存在しない場合 → 手順 2 へ
 
-2. finance パッケージのアナリストスキルを列挙する
+2. finance パッケージのアナリストスキルを列挙し、アナリスト判定と未登録チェックを行う
    - `.claude/plugins/finance/skills/*/SKILL.md` および `.claude/plugins/finance/skills-hidden/*/SKILL.md` を Glob で検索する
-   - 各 SKILL.md の frontmatter description を確認し、分析スキルを特定する（analyst-catalog, report-collector, report-store 等の基盤スキルを除く）
-   - 未登録のアナリストに対し analyst-catalog の register 操作を呼び出す
+   - 各 SKILL.md frontmatter の `role` フィールドを確認してアナリストを判定する:
+     - `role: analyst` → 分析スキルとして確認
+     - `role: infra` → スキップ
+     - `role` 未設定 → description を参照し判断（旧スキルの後方互換）
+   - catalog.yaml に存在しないアナリストのみ analyst-catalog の register を呼び出す
+     （**register は非冪等**。登録済みのアナリストに対して register を呼ばないこと）
    - 結果をキャッシュする
 
 3. キャッシュ完了

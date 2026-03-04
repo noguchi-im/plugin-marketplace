@@ -1,5 +1,6 @@
 ---
 name: boj-api
+role: infra
 description: 日本銀行 時系列統計データ検索サイトの API を利用して約20万系列の統計データの探索・取得を行う。catalog（機能一覧）、explore（DB内メタデータ探索）、fetch（データ取得）の3操作を提供する。日銀統計データが必要な時に使用する。
 disable-model-invocation: false
 allowed-tools: Read, Glob, Bash

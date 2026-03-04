@@ -1,5 +1,6 @@
 ---
 name: reit-analyst
+role: analyst
 description: REIT（不動産投資信託）のポートフォリオ品質・財務健全性・運用コスト・バリュエーションを物件タイプ別に統合分析し、鑑定評価額の独自検証を含む投資レーティング付きレポートを生成する。REIT 分析・比較を行いたい時に使用する。
 disable-model-invocation: false
 user-invocable: true

@@ -1,5 +1,6 @@
 ---
 name: report-store
+role: infra
 description: レポート成果物のメタデータ付き保存・タグ付け・検索・取得を行う基盤サービス。レポートの保存・検索・取得・スコア更新を行いたい時に使用する。
 disable-model-invocation: true
 user-invocable: false

@@ -1,5 +1,6 @@
 ---
 name: analyst-catalog
+role: infra
 description: アナリストスキルの能力と状態を面接・評価し、構造化カタログとして管理する基盤サービス。アナリストの登録・更新・利用記録を行いたい時に使用する。
 disable-model-invocation: true
 user-invocable: false
@@ -22,7 +23,9 @@ interview-protocol のパスは Glob で `.claude/plugins/finance/**/analyst-cat
 
 catalog.yaml のパス解決:
 1. Glob で `.claude/plugins/finance/**/analyst-catalog/references/catalog.yaml` を検索する
-2. 見つかった場合 → そのパスを使用する
+2. 見つかった場合:
+   - 1件 → そのパスを使用する
+   - 複数件 → `skills-hidden/` 配下のパスを優先する。それでも複数の場合は先頭の1つを使用する
 3. 見つからない場合（初回）→ Glob で `.claude/plugins/finance/**/analyst-catalog/references/interview-protocol.md` を検索し、その親ディレクトリ（references/）を得る。そのディレクトリに `catalog.yaml` を作成する
 
 ## 操作の判定
@@ -53,6 +56,14 @@ analyst_name から対象スキルの SKILL.md を探す。
 - いずれにも見つからない場合 → エラーを返す: 「SKILL.md が見つかりません: <analyst_name>」
 - finance パッケージ外のスキル名の場合 → エラーを返す: 「スコープ外: finance パッケージのアナリストのみ対象」
 
+### 1.5. アナリスト判定
+
+SKILL.md frontmatter の `role` フィールドを確認する。
+
+- `role: analyst` → 続行
+- `role: infra` → エラーを返す: 「対象外: <analyst_name> は infra スキルです。analyst-catalog の管理対象外」
+- `role` フィールド未設定 → 警告を出しつつ続行: 「警告: <analyst_name> に role フィールドがありません（後方互換モード）」
+
 ### 2. 重複チェック
 
 カタログファイルが存在する場合、Read で読み込み analyst_name のエントリを探す。
@@ -76,6 +87,10 @@ SKILL.md を Read で読み込み、以下を抽出する:
 | output_type | 結果返却セクション | 出力の種類を要約 |
 
 抽出できない項目は null とする。
+
+**confidence 評価**: 以下の基準で決定する:
+- `high`: domain, market, focus_areas が全て抽出できた場合
+- `low`: いずれかが null の場合 → 警告を出す: 「警告: capability が不完全です（confidence=low）。ルーティング精度が低下する可能性があります」
 
 ### 4. 成果物検査（competence 評価）
 
@@ -125,6 +140,7 @@ name: <analyst_name>
 registered_at: <今日の日付 YYYY-MM-DD>
 updated_at: <今日の日付 YYYY-MM-DD>
 capability:
+  confidence: high | low
   domain: <抽出値>
   market: <抽出値>
   operations: [<抽出値>]
