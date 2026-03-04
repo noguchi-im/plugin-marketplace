@@ -67,16 +67,16 @@ $ARGUMENTS から操作を判定する:
 
 全操作の冒頭で DB の存在を確認する。
 
-1. `home/finance/mbo-analyst/db/mbo.db` の存在を Bash で確認する
+1. `<base_dir>/mbo-analyst/db/mbo.db` の存在を Bash で確認する
 2. 存在しない場合 → Glob でスクリプトパスを解決し、`mbo_db.py init` で初期化する:
 
 ```bash
 python3 <scripts/mbo_db.py のパス> init \
   --init-sql <scripts/init.sql のパス> \
-  --db-path home/finance/mbo-analyst/db/mbo.db
+  --db-path <base_dir>/mbo-analyst/db/mbo.db
 ```
 
-DB パス: `home/finance/mbo-analyst/db/mbo.db`（リポジトリルートからの相対パス）
+DB パス: `<base_dir>/mbo-analyst/db/mbo.db`（リポジトリルートからの相対パス）
 
 ## criteria 操作
 
@@ -221,7 +221,7 @@ mbo_db.py で一括保存する:
 python3 <scripts/mbo_db.py> batch-score-save \
   --scores '<JSON配列>' \
   --source-info '<CSV概要>' \
-  --db-path home/finance/mbo-analyst/db/mbo.db
+  --db-path <base_dir>/mbo-analyst/db/mbo.db
 ```
 
 JSON 配列の各要素:
@@ -283,7 +283,7 @@ mbo_db.py で scan を登録する:
 ```bash
 python3 <scripts/mbo_db.py> scan-create \
   --source-info '<CSV概要: 行数, 認識列名>' \
-  --db-path home/finance/mbo-analyst/db/mbo.db
+  --db-path <base_dir>/mbo-analyst/db/mbo.db
 ```
 
 返却された scan_id を以降のステップで使用する。
@@ -333,7 +333,7 @@ python3 <scripts/mbo_db.py> scan-result-add \
   --result '<pass|fail|uncertain>' \
   --reason '<判定理由>' \
   --ownership-pct '<持株比率 or null>' \
-  --db-path home/finance/mbo-analyst/db/mbo.db
+  --db-path <base_dir>/mbo-analyst/db/mbo.db
 ```
 
 ### 5. 結果返却
@@ -995,7 +995,7 @@ python3 <scripts/mbo_db.py> analyze-save \
   --financing-feasibility '<JSON: {ltv, dscr, collateral_margin, interest_tolerance, rate_adjustment}>' \
   --authority-signal '<JSON or null>' \
   --report-path '<相対パス>' \
-  --db-path home/finance/mbo-analyst/db/mbo.db
+  --db-path <base_dir>/mbo-analyst/db/mbo.db
 
 # Gate 除外銘柄
 python3 <scripts/mbo_db.py> analyze-save \
@@ -1006,21 +1006,21 @@ python3 <scripts/mbo_db.py> analyze-save \
   --gate-fail-reason '<除外理由>' \
   --valuation-score 0 \
   --report-path '<相対パス>' \
-  --db-path home/finance/mbo-analyst/db/mbo.db
+  --db-path <base_dir>/mbo-analyst/db/mbo.db
 ```
 
 ### 16. レポート保存
 
 Write で Markdown ファイルを保存する:
 
-パス: `home/finance/mbo-analyst/reports/{code}/analyze-{YYYY-MM-DD}.md`
+パス: `<base_dir>/mbo-analyst/reports/{code}/analyze-{YYYY-MM-DD}.md`
 
 同日に既存ファイルがある場合: `analyze-{YYYY-MM-DD}-{seq}.md`（seq: 2, 3, ...）
 
 保存前にディレクトリの存在を Bash で確認・作成する:
 
 ```bash
-mkdir -p home/finance/mbo-analyst/reports/{code}
+mkdir -p <base_dir>/mbo-analyst/reports/{code}
 ```
 
 ### 17. report-store 保存（任意）
@@ -1085,8 +1085,8 @@ report-store 利用不可 → スキップ。
 
 ## watchlist 操作
 
-watchlist ファイルパス: `home/finance/mbo-analyst/watchlist/candidates.jsonl`
-index ファイルパス: `home/finance/mbo-analyst/watchlist/index.md`
+watchlist ファイルパス: `<base_dir>/mbo-analyst/watchlist/candidates.jsonl`
+index ファイルパス: `<base_dir>/mbo-analyst/watchlist/index.md`
 
 ### サブコマンド判定
 
@@ -1254,12 +1254,12 @@ $ARGUMENTS からレビュー対象を決定する。
   ```bash
   python3 <scripts/mbo_db.py> get-latest-analysis \
     --stock-code '<code>' \
-    --db-path home/finance/mbo-analyst/db/mbo.db
+    --db-path <base_dir>/mbo-analyst/db/mbo.db
   ```
 - all → mbo_db.py で分析済み全銘柄を取得:
   ```bash
   python3 <scripts/mbo_db.py> search-analyses \
-    --db-path home/finance/mbo-analyst/db/mbo.db
+    --db-path <base_dir>/mbo-analyst/db/mbo.db
   ```
 - 分析履歴がない場合 → エラーを返す
 
@@ -1352,14 +1352,14 @@ python3 <scripts/mbo_db.py> review-save \
   --fund-watchlist-events '<JSON配列 or null>' \
   --authority-events '<JSON配列 or null>' \
   --report-path '<相対パス or null>' \
-  --db-path home/finance/mbo-analyst/db/mbo.db
+  --db-path <base_dir>/mbo-analyst/db/mbo.db
 ```
 
 ### 6. レポート保存
 
 変化が検出された銘柄について、Write で review レポートを保存する:
 
-パス: `home/finance/mbo-analyst/reports/{code}/review-{YYYY-MM-DD}.md`
+パス: `<base_dir>/mbo-analyst/reports/{code}/review-{YYYY-MM-DD}.md`
 
 変化なしの場合はレポート保存をスキップする。
 
@@ -1539,7 +1539,7 @@ Task(subagent_type="general-purpose", model="sonnet", prompt=<上記>)
 | 2 | ... | ... | ... | A | 12.8 | 3.9 | 4.0 | 3.6 | 3.2 | 2 | 通常監視 | 最優先 | family_holding |
 
 ### 各銘柄の分析レポートパス
-- {code}: home/finance/mbo-analyst/reports/{code}/analyze-YYYY-MM-DD.md
+- {code}: <base_dir>/mbo-analyst/reports/{code}/analyze-YYYY-MM-DD.md
 ```
 
 ### 6. イベント記録

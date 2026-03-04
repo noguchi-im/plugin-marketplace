@@ -222,7 +222,7 @@ report-collector feedback
 分析実績を event-log に記録する。
 
 ```
-home/finance/sector-analyst/memory/events.jsonl
+<base_dir>/sector-analyst/memory/events.jsonl
 ```
 
 記録内容: セクター名、depth、3 軸スコア、セクターレーティング、データ充足状況

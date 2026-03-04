@@ -319,7 +319,7 @@ report-collector feedback
 分析実績を event-log に記録する。
 
 ```
-home/finance/reit-analyst/memory/events.jsonl
+<base_dir>/reit-analyst/memory/events.jsonl
 ```
 
 記録内容: REIT コード、物件タイプ、depth、5 軸スコア、投資レーティング、データ充足状況、鑑定プレミアム/ディスカウント率、賃料ギャップの方向

@@ -13,8 +13,8 @@ allowed-tools: Read, Write, Glob, Bash
 
 | 名称 | パス（リポジトリルートからの相対） |
 |---|---|
-| DB | `home/finance/report-store/index/report-index.db` |
-| レポート保存先 | `home/finance/report-store/reports/YYYY/` |
+| DB | `<base_dir>/report-store/index/report-index.db` |
+| レポート保存先 | `<base_dir>/report-store/reports/YYYY/` |
 
 スクリプトのパスは Glob で `.claude/plugins/finance/**/report-store/scripts/report_db.py` を検索して特定する。
 
@@ -63,7 +63,7 @@ python3 <script_path>/report_db.py generate-id --date <date>
 
 ### 3. Markdown ファイル保存
 
-保存先: `home/finance/report-store/reports/YYYY/rpt-YYYYMMDD-NNN.md`
+保存先: `<base_dir>/report-store/reports/YYYY/rpt-YYYYMMDD-NNN.md`
 
 - Bash で `mkdir -p` してディレクトリを確保する
 - Write ツールでレポート本文を保存する
@@ -85,7 +85,7 @@ JSON 構造:
     "domain_id": "...",
     "subject": "...",
     "date": "YYYY-MM-DD",
-    "file_path": "home/finance/report-store/reports/YYYY/rpt-YYYYMMDD-NNN.md",
+    "file_path": "<base_dir>/report-store/reports/YYYY/rpt-YYYYMMDD-NNN.md",
     "analyst": "...",
     "incomplete": 0,
     "updates": null,

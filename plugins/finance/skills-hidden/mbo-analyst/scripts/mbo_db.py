@@ -8,7 +8,7 @@ import sqlite3
 import sys
 from datetime import datetime, timezone
 
-DEFAULT_DB_PATH = "home/finance/mbo-analyst/db/mbo.db"
+DEFAULT_DB_PATH = "<base_dir>/mbo-analyst/db/mbo.db"
 
 
 # ── helpers ──────────────────────────────────────────────────

@@ -20,7 +20,7 @@ import sqlite3
 import sys
 from datetime import datetime
 
-DEFAULT_DB_PATH = "home/finance/report-store/index/report-index.db"
+DEFAULT_DB_PATH = "<base_dir>/report-store/index/report-index.db"
 
 # reliability_score: source_tier -> points
 TIER_SCORES = {1: 5, 2: 3, 3: 1}

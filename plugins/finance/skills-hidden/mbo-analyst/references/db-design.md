@@ -23,7 +23,7 @@
 
 ## DB パス
 
-`home/finance/mbo-analyst/db/mbo.db`（リポジトリルートからの相対パス）
+`<base_dir>/mbo-analyst/db/mbo.db`（リポジトリルートからの相対パス）
 
 ## テーブル設計
 
