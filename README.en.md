@@ -17,7 +17,7 @@ Install via Claude Code's Plugin Marketplace commands.
 
 ```bash
 # Add the marketplace
-/plugin marketplace add nogutetu/plugin-marketplace
+/plugin marketplace add noguchi-im/plugin-marketplace
 
 # Install individual plugins
 /plugin install tools-document

@@ -17,7 +17,7 @@ A collection of document processing skills for Claude Code that handles reading,
 
 ```bash
 # Install from marketplace
-/plugin marketplace add nogutetu/plugin-marketplace
+/plugin marketplace add noguchi-im/plugin-marketplace
 /plugin install tools-document
 ```
 
