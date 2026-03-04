@@ -1,0 +1,80 @@
+- name: etf-analyst
+  registered_at: 2026-02-28
+  updated_at: 2026-02-28
+  capability:
+    domain: ETF分析
+    market: null
+    operations: [analyze, compare, review]
+    focus_areas: [コスト分析, トラッキング分析, 流動性分析, 構成銘柄分析, 分配金分析]
+    depth_levels: [概要, 標準, 詳細]
+    input_type: 自然言語の分析依頼（ETF 名・銘柄コード・ティッカー）+ オプション（focus, depth, deep_constituents）。対象は上場投資信託（ETF）に限定
+    output_type: 構造化 Markdown レポート + 4 軸スコアリング + 投資レーティング
+  competence:
+    rubric_exists: true
+    rubric_updated: 2026-02-28
+    analysis_count: 0
+    last_analysis: null
+    quality_summary: null
+    strength_areas: []
+    weakness_areas: []
+  status: active
+- name: reit-analyst
+  registered_at: 2026-02-28
+  updated_at: 2026-02-28
+  capability:
+    domain: REIT分析
+    market: null
+    operations: [analyze, compare, review]
+    focus_areas: [ポートフォリオ分析, 財務分析, 運用コスト分析, バリュエーション分析, 流動性分析, 分配金分析]
+    depth_levels: [概要, 標準, 詳細]
+    input_type: 自然言語の分析依頼（REIT 名・銘柄コード・ティッカー）+ オプション（focus, depth）。対象は上場 REIT（不動産投資信託）に限定（私募 REIT は対象外）
+    output_type: 構造化 Markdown レポート + 5 軸スコアリング（物件タイプ別重み） + 投資レーティング + 鑑定評価独自検証
+  competence:
+    rubric_exists: true
+    rubric_updated: 2026-02-28
+    analysis_count: 0
+    last_analysis: null
+    quality_summary: null
+    strength_areas: []
+    weakness_areas: []
+  status: active
+- name: stock-analyst
+  registered_at: 2026-02-28
+  updated_at: 2026-02-28
+  capability:
+    domain: 個別株式分析
+    market: null
+    operations: [analyze, review]
+    focus_areas: [ファンダメンタルズ, バリュエーション, 定性分析]
+    depth_levels: [概要, 標準, 詳細]
+    input_type: 自然言語の分析依頼（企業名・銘柄コード・ティッカー）+ オプション（focus, depth）。対象は個別企業の上場株式に限定（ETF・投信は対象外）
+    output_type: 構造化 Markdown レポート + 3 軸スコアリング + 投資レーティング
+  competence:
+    rubric_exists: true
+    rubric_updated: 2026-02-27
+    analysis_count: 0
+    last_analysis: null
+    quality_summary: null
+    strength_areas: []
+    weakness_areas: []
+  status: active
+- name: sector-analyst
+  registered_at: 2026-03-01
+  updated_at: 2026-03-01
+  capability:
+    domain: セクター分析
+    market: null
+    operations: [analyze, review]
+    focus_areas: [TAM分析, 業界構造分析, 競争環境分析, セクター内ランキング, セクター固有リスク]
+    depth_levels: [概要, 標準, 詳細]
+    input_type: 自然言語の分析依頼（セクター名・業種名）+ オプション（focus, depth）。対象はセクター・業種に限定
+    output_type: 構造化 Markdown レポート + 3 軸スコアリング + セクターレーティング
+  competence:
+    rubric_exists: true
+    rubric_updated: 2026-03-01
+    analysis_count: 0
+    last_analysis: null
+    quality_summary: null
+    strength_areas: []
+    weakness_areas: []
+  status: active

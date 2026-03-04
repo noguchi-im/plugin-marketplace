@@ -185,8 +185,8 @@ status: active | inactive
 
 - register 時は常に `active`
 - update 時:
-  - SPEC.md が存在し読み込めれば `active`
-  - SPEC.md が存在しない（削除された）場合 → `inactive`
+  - SKILL.md が存在し読み込めれば `active`
+  - SKILL.md が存在しない（削除された）場合 → `inactive`
 
 ## ジャーナルエントリ構造
 

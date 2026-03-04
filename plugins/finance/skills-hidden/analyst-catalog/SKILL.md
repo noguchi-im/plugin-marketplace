@@ -13,12 +13,17 @@ allowed-tools: Read, Write, Edit, Glob, Bash
 
 | 名称 | パス（リポジトリルートからの相対） |
 |---|---|
-| カタログ | `<base_dir>/analyst-catalog/catalog.yaml` |
+| カタログ | 本スキルの `references/catalog.yaml`（後述のパス解決に従う） |
 | ジャーナル | `<base_dir>/analyst-catalog/journals/<analyst_name>.yaml` |
 | アナリスト SKILL | `.claude/plugins/finance/skills/<analyst_name>/SKILL.md` または `.claude/plugins/finance/skills-hidden/<analyst_name>/SKILL.md` |
 | アナリスト実装 | `.claude/plugins/finance/skills/<analyst_name>/` または `.claude/plugins/finance/skills-hidden/<analyst_name>/` |
 
 interview-protocol のパスは Glob で `.claude/plugins/finance/**/analyst-catalog/references/interview-protocol.md` を検索して特定する。
+
+catalog.yaml のパス解決:
+1. Glob で `.claude/plugins/finance/**/analyst-catalog/references/catalog.yaml` を検索する
+2. 見つかった場合 → そのパスを使用する
+3. 見つからない場合（初回）→ Glob で `.claude/plugins/finance/**/analyst-catalog/references/interview-protocol.md` を検索し、その親ディレクトリ（references/）を得る。そのディレクトリに `catalog.yaml` を作成する
 
 ## 操作の判定
 

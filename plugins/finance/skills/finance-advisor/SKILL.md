@@ -14,8 +14,7 @@ allowed-tools: Read, Glob, WebFetch, WebSearch, Skill
 
 | 名称 | パス（リポジトリルートからの相対） |
 |---|---|
-| カタログ | `<base_dir>/analyst-catalog/catalog.yaml` |
-| アナリスト SPEC | `.claude/packagespec/finance/skills/<analyst_name>/SPEC.md` |
+| カタログ | Glob `.claude/plugins/finance/**/analyst-catalog/references/catalog.yaml` で解決 |
 
 budget-tiers.md のパスは Glob で `.claude/plugins/finance/**/finance-advisor/references/budget-tiers.md` を検索して特定する。
 
@@ -23,13 +22,13 @@ budget-tiers.md のパスは Glob で `.claude/plugins/finance/**/finance-adviso
 
 会話開始時にカタログキャッシュを構築する。
 
-1. カタログファイル（`<base_dir>/analyst-catalog/catalog.yaml`）を Read で読み込む
+1. Glob で `.claude/plugins/finance/**/analyst-catalog/references/catalog.yaml` を検索し、見つかった場合は Read で読み込む
    - 存在する場合 → 内容をキャッシュし、手順 3 へ
    - 存在しない場合 → 手順 2 へ
 
 2. finance パッケージのアナリストスキルを列挙する
-   - `.claude/packagespec/finance/skills/*/SPEC.md` を Glob で検索する
-   - 各 SPEC の「目的」セクションを確認し、分析スキルを特定する（基盤スキルを除く）
+   - `.claude/plugins/finance/skills/*/SKILL.md` および `.claude/plugins/finance/skills-hidden/*/SKILL.md` を Glob で検索する
+   - 各 SKILL.md の frontmatter description を確認し、分析スキルを特定する（analyst-catalog, report-collector, report-store 等の基盤スキルを除く）
    - 未登録のアナリストに対し analyst-catalog の register 操作を呼び出す
    - 結果をキャッシュする
 
