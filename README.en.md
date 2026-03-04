@@ -9,6 +9,7 @@ A collection of plugins for Claude Code. This repository hosts plugins that exte
 | Plugin | Type | Description |
 |--------|------|-------------|
 | [tools-document](plugins/tools-document/) | Skill | Document processing skills for reading, creating, and manipulating PDF, Word, PowerPoint, and Excel files |
+| [finance](plugins/finance/) | Skill | Financial analysis skills for economics, investment products, stocks, portfolios, and investment decision support |
 
 ## Usage
 

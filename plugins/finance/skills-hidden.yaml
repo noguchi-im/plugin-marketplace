@@ -1,0 +1,18 @@
+- name: report-store
+  hidden_at: "2026-02-10"
+  reason: Advisor 経由でアクセスされる基盤サービス
+- name: report-collector
+  hidden_at: "2026-02-14"
+  reason: 収集基盤サービスであり、単独で命令者が直接呼び出す用途を想定しない
+- name: analyst-catalog
+  hidden_at: "2026-02-16"
+  reason: 基盤サービスとして他スキルから参照される
+- name: macro-theme-analyst
+  hidden_at: "2026-02-16"
+  reason: Advisor 経由でアクセスされるアナリストスキル
+- name: mbo-analyst
+  hidden_at: "2026-02-17"
+  reason: Advisor 経由でアクセスされる MBO 特化アナリストスキル
+- name: sector-analyst
+  hidden_at: "2026-03-01"
+  reason: Advisor 経由でアクセスされるセクター分析アナリストスキル

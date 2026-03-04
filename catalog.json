@@ -12,6 +12,18 @@
       "author": "nogutetu",
       "tags": ["document", "pdf", "docx", "pptx", "xlsx", "office"],
       "path": "plugins/tools-document"
+    },
+    {
+      "name": "finance",
+      "version": "0.15.1",
+      "type": "skill",
+      "description": {
+        "ja": "金融分析（経済・投資商品・株式・ポートフォリオ）と投資判断支援のスキル群",
+        "en": "Financial analysis skills for economics, investment products, stocks, portfolios, and investment decision support"
+      },
+      "author": "nogutetu",
+      "tags": ["finance", "stock", "etf", "reit", "investment", "analysis", "portfolio"],
+      "path": "plugins/finance"
     }
   ]
 }

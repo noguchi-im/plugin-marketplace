@@ -1,0 +1,35 @@
+# ソースカタログ — report-collector
+#
+# tier: 1 = 公的一次情報、2 = 公式集計、3 = 二次メディア
+# access.mcp: .mcp.json に設定済みの MCP サーバー名
+# access.fallback: MCP 不可時の WebFetch URL
+#
+# カタログの追加・更新は手動で行う（自動更新は非目標）
+
+sources:
+  - id: edinet
+    name: EDINET
+    description: 金融庁 企業開示情報システム
+    data_types: [corporate-disclosure, financial-statements]
+    access:
+      mcp: edinet-mcp
+      fallback: https://disclosure.edinet-fsa.go.jp/
+    tier: 1
+
+  - id: fred
+    name: Federal Reserve Economic Data
+    description: 米連邦準備制度 経済データ
+    data_types: [economic-indicator]
+    access:
+      mcp: fred-mcp
+      fallback: https://fred.stlouisfed.org/
+    tier: 1
+
+  - id: yahoo-finance
+    name: Yahoo Finance
+    description: 株価・為替・暗号資産
+    data_types: [stock-price, fx-rate, index-price]
+    access:
+      mcp: yfinance-mcp
+      fallback: https://finance.yahoo.com/
+    tier: 2

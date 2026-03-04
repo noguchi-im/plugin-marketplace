@@ -1,0 +1,65 @@
+# 日本銀行 時系列統計データ検索サイト API 用 DB カタログ
+# 必要に応じて api.limits と databases を編集してください。
+# 出典: https://www.stat-search.boj.or.jp/
+# 統計一覧: https://www.stat-search.boj.or.jp/info/manual_list.html
+
+api:
+  limits:
+    # 階層 API: 1リクエストあたりの系列数上限（超えると M181007E）
+    max_series_per_request_layer: 1250
+    # コード API: 1リクエストあたりの系列数上限
+    max_series_per_request_code: 250
+    # 高頻度アクセスは接続遮断の可能性あり。連続リクエストには間隔をあける
+    request_interval_note: "連続リクエストには間隔をあけること"
+
+databases:
+  # 景気・短観
+  - db: CO
+    label: 全国企業短期経済観測調査（短観）
+    category: 景気・短観
+  # 金利
+  - db: IR01
+    label: 基準割引率および基準貸付利率
+    category: 金利
+  - db: IR02
+    label: 預金種類別店頭表示金利の平均年利率等
+    category: 金利
+  - db: IR03
+    label: 定期預金の預入期間別平均金利
+    category: 金利
+  - db: IR04
+    label: 貸出約定平均金利
+    category: 金利
+  # マーケット
+  - db: FM01
+    label: 無担保コール O/N 物レート
+    category: マーケット
+  - db: FM02
+    label: 短期金融市場金利
+    category: マーケット
+  - db: FM03
+    label: 短期金融市場残高
+    category: マーケット
+  - db: FM08
+    label: マーケット関連統計
+    category: マーケット
+  # 預金・マネー
+  - db: MD02
+    label: マネーストック
+    category: 預金・マネー
+  # 国際収支・対外関係
+  - db: BP01
+    label: 国際収支関連
+    category: 国際収支・対外
+  # 資金循環（階層 API 例で使用）
+  - db: FF
+    label: 資金循環統計
+    category: 資金循環
+  # 物価
+  - db: PR01
+    label: 企業物価指数等
+    category: 物価
+  # 金融機関
+  - db: BS01
+    label: 金融機関のバランスシート等
+    category: 金融機関
