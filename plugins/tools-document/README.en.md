@@ -15,11 +15,10 @@ A collection of document processing skills for Claude Code that handles reading,
 
 ## Installation
 
-Add this plugin directory to your Claude Code plugins configuration.
-
 ```bash
-# Example: copy to your project's .claude/plugins
-cp -r plugins/tools-document /path/to/your/project/.claude/plugins/
+# Install from marketplace
+/plugin marketplace add nogutetu/plugin-marketplace
+/plugin install tools-document
 ```
 
 ## Structure
@@ -28,7 +27,6 @@ cp -r plugins/tools-document /path/to/your/project/.claude/plugins/
 tools-document/
 ├── .claude-plugin/
 │   └── plugin.json          # Plugin definition
-├── manifest.json             # Metadata
 └── skills/
     ├── pdf/
     │   ├── SKILL.md          # PDF skill definition
