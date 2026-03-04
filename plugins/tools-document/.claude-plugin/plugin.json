@@ -1,0 +1,5 @@
+{
+  "name": "tools-document",
+  "description": "PDF・Word・PowerPoint・Excel の読取・作成・操作を行うドキュメント処理スキル群",
+  "version": "0.4.1"
+}

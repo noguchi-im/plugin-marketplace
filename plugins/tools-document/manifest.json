@@ -1,0 +1,14 @@
+{
+  "name": "tools-document",
+  "version": "0.4.1",
+  "type": "skill",
+  "description": {
+    "ja": "PDF・Word・PowerPoint・Excel の読取・作成・操作を行うドキュメント処理スキル群",
+    "en": "Document processing skills for reading, creating, and manipulating PDF, Word, PowerPoint, and Excel files"
+  },
+  "author": "nogutetu",
+  "license": "MIT",
+  "tags": ["document", "pdf", "docx", "pptx", "xlsx", "office"],
+  "claude_code_version": ">=1.0.0",
+  "entry": "skills/"
+}
