@@ -1,5 +1,6 @@
 ---
 name: sector-analyst
+role: analyst
 description: セクター・業種の市場規模・成長性・業界構造・競争環境・企業ランキングを統合分析し、セクターレーティング付きレポートを生成する。セクター分析・業界分析を行いたい時に使用する。
 disable-model-invocation: false
 user-invocable: false

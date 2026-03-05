@@ -1,7 +1,7 @@
 {
   "name": "finance",
   "description": "Financial analysis skills for economics, investment products, stocks, portfolios, and investment decision support",
-  "version": "0.16.0",
+  "version": "0.16.3",
   "settings": {
     "base_dir": {
       "description": "成果物・学習データの配置ベースパス",

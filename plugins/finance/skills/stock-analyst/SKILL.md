@@ -1,5 +1,6 @@
 ---
 name: stock-analyst
+role: analyst
 description: 個別株式・企業のファンダメンタルズ・バリュエーション・リスクを統合分析し、投資レーティング付きレポートを生成する。銘柄分析・企業分析を行いたい時に使用する。
 disable-model-invocation: false
 user-invocable: true

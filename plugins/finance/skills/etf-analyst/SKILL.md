@@ -1,5 +1,6 @@
 ---
 name: etf-analyst
+role: analyst
 description: ETF（上場投資信託）の経費率・トラッキング品質・流動性・構成銘柄を統合分析し、投資レーティング付きレポートを生成する。ETF 分析・比較を行いたい時に使用する。
 disable-model-invocation: false
 user-invocable: true

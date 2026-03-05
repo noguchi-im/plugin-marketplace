@@ -17,7 +17,7 @@ Claude Code の Plugin Marketplace コマンドでインストールできます
 
 ```bash
 # マーケットプレイスを追加
-/plugin marketplace add nogutetu/plugin-marketplace
+/plugin marketplace add noguchi-im/plugin-marketplace
 
 # 個別のPluginをインストール
 /plugin install tools-document

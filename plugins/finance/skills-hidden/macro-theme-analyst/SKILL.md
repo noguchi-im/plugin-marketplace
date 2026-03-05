@@ -1,5 +1,6 @@
 ---
 name: macro-theme-analyst
+role: analyst
 description: 投資テーマに対してテーゼを構築し、懐疑的に検証し、条件付き未来の確率分布を構築する。テーマ分析・マクロテーマ評価を行いたい時に使用する。
 disable-model-invocation: false
 user-invocable: false
