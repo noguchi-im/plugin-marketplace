@@ -45,6 +45,15 @@ plugin-marketplace/
 Each plugin is placed as an independent folder under the `plugins/` directory.
 See the `README.md` in each folder for details.
 
+## Common conventions for all plugins
+
+- **Configuration override**: Plugin settings (e.g. finance's `base_dir`) can be overridden in the project's `.claude/settings.json` or `settings.local.json`.
+- **skills-hidden**: Some plugins have hidden skills that are not invokable via the Skill tool. Callers Read the relevant SKILL.md and execute procedures inline. See each plugin's README for details.
+- **Namespace**: Invoke skills and commands as `plugin-name:resource-name` (e.g. `finance:stock`, `tools-document:pdf`).
+- **Workspace**: If a plugin defines a base_dir, use `<base_dir>/workspace/` for temporary files. If it does not, follow the project's rules.
+
+For details, see each plugin's README and CLAUDE.md.
+
 ## Contributing
 
 Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
